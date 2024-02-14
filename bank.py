@@ -3,7 +3,6 @@
 # 
 
 transactions = []
-balance = 0
 
 while True:
     print("\nBanking Options:")
@@ -21,7 +20,6 @@ while True:
         print("Please enter the deposit amount...")
         deposit = int(input())
         print("Your deposit is:" + str(deposit))
-        balance = balance + deposit
         transactions.append(deposit)
         pass
     elif choice == '2':
@@ -29,23 +27,23 @@ while True:
         # https://www.w3schools.com/python/python_lists_add.asp
         print("Please enter the withdraw amount...")
         withdraw = int(input())
-        if balance > withdraw:
-            print("Your withdraw is:" + str(withdraw))
-            balance = balance - withdraw
-            transactions.append(withdraw)
-        else:
-            print("You don't have money")
+        withdraw = withdraw * -1
+        print("Your withdraw is:" + str(withdraw))
+        transactions.append(withdraw)
         pass
     elif choice == '3':
         # pārbaudīt atlikumu
         # jasummē visus saraksta elementus kopā ar ciklu palidzību
         # https://www.w3schools.com/python/python_for_loops.asp
         print("Your balance is:")
-        print(balance)
+        for balance in transactions:
+            balance = sum(transactions)
+            print(balance)
         pass
     elif choice == '4':
         # rāda 10 pēdējas transakcijas
         # https://www.w3schools.com/python/python_lists_access.asp (Range of Negative Indexes)
+        print(transactions[-11:-1])
         pass
     elif choice == '5':
         print("Exiting the banking system. Thank you!")
